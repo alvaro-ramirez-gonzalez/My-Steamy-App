@@ -11,7 +11,7 @@ import { ToastController } from '@ionic/angular';
   standalone: false
 })
 export class DealCardComponent {
-  // Inyecciones
+  
   public userStore = inject(UserStore);
   private toastCtrl = inject(ToastController);
 
@@ -19,7 +19,7 @@ export class DealCardComponent {
 
   async openDeal() {
     const url = `https://www.cheapshark.com/redirect?dealID=${this.deal.dealID}`;
-    await Browser.open({ url });
+    await Browser.open({ url });  
   }
 
   async toggleFavorite() {
