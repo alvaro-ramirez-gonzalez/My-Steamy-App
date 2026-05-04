@@ -1,0 +1,18 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    
+    <ion-tab-button tab="deals">
+      <ion-icon name="pricetag-outline"></ion-icon>
+      <ion-label>Deals</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="favorites">
+      <ion-icon name="heart-outline"></ion-icon>
+      <ion-label>Favorites</ion-label>
+      <ion-badge color="danger" *ngIf="userStore.favoritesCount() > 0">
+        {{ userStore.favoritesCount() }}
+      </ion-badge>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>

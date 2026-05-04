@@ -1,0 +1,39 @@
+<ion-card class="glass-card">
+  <div class="save-badge" *ngIf="deal.savings && deal.savings !== '0.000000'">
+    -{{ deal.savings | number:'1.0-0' }}%
+  </div>
+  
+  <ion-button 
+    class="fav-btn" 
+    fill="clear" 
+    (click)="toggleFavorite(); $event.stopPropagation()">
+    <ion-icon 
+      [name]="userStore.isFavorite(deal.dealID) ? 'heart' : 'heart-outline'" 
+      [color]="userStore.isFavorite(deal.dealID) ? 'danger' : 'light'">
+    </ion-icon>
+  </ion-button>
+
+  <div class="img-container">
+    <img [src]="deal.thumb" [alt]="deal.title" class="game-img" (click)="openDeal()" />
+  </div>
+
+  <ion-card class="glass-card">
+  <ion-card-header (click)="openDeal()">
+    <ion-card-title class="game-title">{{ deal.title }}</ion-card-title>
+    <ion-badge [color]="getRatingColor(deal.metacriticScore)" class="score-badge">
+      Metacritic: {{ deal.metacriticScore || 'N/A' }}
+    </ion-badge>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="price-container">
+      <span class="normal-price">{{ deal.normalPrice | currency }}</span>
+      <span class="sale-price">{{ deal.salePrice | currency }}</span>
+    </div>
+
+    <ion-button expand="block" color="primary" class="view-btn ion-margin-top" (click)="openDeal()">
+      View Deal
+      <ion-icon name="cart-outline" slot="end"></ion-icon>
+    </ion-button>
+  </ion-card-content>
+</ion-card>

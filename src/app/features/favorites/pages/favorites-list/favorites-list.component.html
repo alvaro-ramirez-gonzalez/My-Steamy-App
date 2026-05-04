@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border premium-header">
+  <ion-toolbar class="main-toolbar">
+    <ion-title class="ion-text-center">MIS FAVORITOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="userStore.favorites().length === 0" class="empty-state">
+    <div class="icon-container">
+      <ion-icon name="heart-dislike-outline"></ion-icon>
+    </div>
+    <h2>Tu lista de favoritos vacía</h2>
+    <p>Aún no has guardado ninguna oferta. ¡Explora las mejores ofertas!</p>
+    <ion-button expand="block" shape="round" routerLink="/tabs/deals" class="explore-btn">
+      EXPLORAR
+    </ion-button>
+  </div>
+
+  <ion-grid *ngIf="userStore.favorites().length > 0">
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let deal of userStore.favorites()">
+        <app-card 
+          [deal]="deal" 
+          (click)="openDetails(deal)"
+          class="fav-card-item">
+        </app-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="bottom-spacer"></div>
+</ion-content>

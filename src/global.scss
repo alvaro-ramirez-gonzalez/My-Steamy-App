@@ -1,0 +1,97 @@
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+:root {
+  --app-dark-bg: #0a0a12;
+  --app-card-bg: rgba(255, 255, 255, 0.04);
+  --app-accent: #3880ff;
+  --app-success: #2dd36f;
+  --app-glass-border: rgba(255, 255, 255, 0.08);
+  --ion-background-color: var(--app-dark-bg);
+  --ion-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  
+  --ion-tab-bar-background: rgba(10, 10, 18, 0.9);
+  --ion-toolbar-background: rgba(10, 10, 18, 0.8);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--app-dark-bg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, #1e1e3f 0%, #0a0a12 60%);
+  z-index: -1;
+}
+
+ion-app {
+  background: transparent !important;
+}
+
+ion-content {
+  --background: transparent !important;
+  
+  &::part(scroll) {
+    padding-bottom: 90px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+}
+
+ion-router-outlet {
+  background: transparent !important;
+}
+
+ion-button, 
+ion-searchbar, 
+app-card, 
+.fav-btn {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.premium-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}

@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border premium-header">
+  <ion-toolbar class="main-toolbar">
+    <div slot="start" class="header-content">
+      <h1 class="main-title">Game Deals</h1>
+      <p class="sub-title">CRYSTAL CLEAR SAVINGS</p>
+    </div>
+
+    <ion-buttons slot="end">
+      <div class="profile-button">
+        <ion-icon name="person-outline"></ion-icon>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+  
+  <ion-toolbar class="search-toolbar">
+    <ion-searchbar 
+      placeholder="Explorar juegos..." 
+      (ionInput)="onSearch($event)"
+      [debounce]="500"
+      mode="ios"
+      class="custom-searchbar">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="dealsSvc.isLoading()" class="loading-container">
+    <div class="spinner-wrapper">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+    <p>Rastreando las mejores ofertas...</p>
+  </div>
+
+  <ion-grid *ngIf="!dealsSvc.isLoading()" class="animate-in">
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let deal of dealsSvc.deals()">
+        <div class="card-wrapper">
+          <app-card 
+            [deal]="deal" 
+            (click)="openDetails(deal)"
+            class="deal-card-item">
+          </app-card>
+          
+          <div class="store-tag">
+            <img [src]="getStoreLogo(deal.storeID)" alt="Store icon" class="store-logo" />
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row *ngIf="dealsSvc.deals().length === 0" class="empty-results">
+      <ion-col class="ion-text-center">
+        <ion-icon name="search-outline"></ion-icon>
+        <h3>No hay resultados</h3>
+        <p>Intenta con otro nombre </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="bottom-spacer"></div>
+</ion-content>

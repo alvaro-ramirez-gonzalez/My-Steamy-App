@@ -1,0 +1,130 @@
+ion-content {
+  --background: transparent !important;
+
+  height: 100%;
+
+  &::part(scroll) {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+    padding-bottom: 120px;
+    pointer-events: auto !important;
+  }
+}
+
+ion-header {
+  background: transparent;
+  ion-toolbar {
+    --background: rgba(10, 10, 18, 0.75);
+    --border-width: 0;
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    padding: 12px 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    ion-title {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #ffffff, var(--app-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+  }
+}
+
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: -60px;
+
+  .icon-container {
+    width: 140px;
+    height: 140px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px auto;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
+    ion-icon {
+      font-size: 64px;
+      color: rgba(255, 255, 255, 0.1);
+      animation: heartbeat 2.5s ease-in-out infinite;
+    }
+  }
+
+  h2 {
+    color: white;
+    font-weight: 800;
+    font-size: 1.6rem;
+    margin: 0 auto 12px auto;
+    letter-spacing: -0.5px;
+    width: 100%;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 auto 35px auto;
+    max-width: 300px;
+  }
+
+  ion-button {
+    --border-radius: 18px;
+    --background: var(--app-accent);
+    --box-shadow: 0 12px 24px rgba(56, 128, 255, 0.3);
+    font-weight: 800;
+    height: 56px;
+    width: 220px;
+    margin: 0 auto;
+    letter-spacing: 1px;
+  }
+}
+
+ion-grid {
+  padding: 12px;
+  ion-row {
+    justify-content: center;
+  }
+}
+
+
+app-card {
+  display: block;
+  opacity: 0;
+  animation: premiumReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  
+ 
+  width: 100%;
+  max-width: 340px; 
+  margin: 0 auto 16px auto; 
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.08}s;
+    }
+  }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.1); opacity: 0.25; }
+  100% { transform: scale(1); opacity: 0.15; }
+}
+
+@keyframes premiumReveal {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
