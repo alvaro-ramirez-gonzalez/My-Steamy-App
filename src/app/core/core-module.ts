@@ -13,7 +13,7 @@ import { authInterceptor } from './interceptors/auth';
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
-      throw new Error('CoreModule ya está cargado. Impórtalo solo en AppModule.');
+      throw new Error('CoreModule ya está cargado.');
     }
   }
 }
